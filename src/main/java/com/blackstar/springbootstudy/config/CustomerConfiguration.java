@@ -1,5 +1,6 @@
 package com.blackstar.springbootstudy.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,8 +12,11 @@ import org.springframework.context.annotation.Configuration;
  * @date 2020/11/14 13:50
  */
 
-
+@Configuration
 public class CustomerConfiguration {
+
+    @Value("${config.test.value}")
+    private String test;
 
     @Bean
     public MyBean  myBean(){

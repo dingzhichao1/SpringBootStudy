@@ -1,15 +1,7 @@
 package com.blackstar.springbootstudy;
 
-import com.blackstar.springbootstudy.config.MyBean;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.autoconfigure.AutoConfigurationExcludeFilter;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.TypeExcludeFilter;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.Import;
 
 /**
  * Description：SpringBoot的启动类
@@ -19,8 +11,6 @@ import org.springframework.context.annotation.Import;
  * @date 2020/11/14 10:57
  */
 
-//@SpringBootConfiguration
-//@EnableAutoConfiguration
 @SpringBootApplication
 public class SpringBootStudyApplication {
 
