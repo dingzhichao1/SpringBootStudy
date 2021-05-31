@@ -1,4 +1,42 @@
 spring:
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.8.204:3306/ess_dev?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Hongkong&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: taihe123@
+    max-wait: 60000
+    max-active: 100
+    min-idle: 10
+    initial-size: 10
+
+    druid:
+      filters: stat,wall,log4j2
+      #过滤器
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        #开启session统计功能
+        session-stat-enable: true
+        #缺省sessionStatMaxCount是1000个
+        session-stat-max-count: 1000
+
+      #启用内置的监控页面
+      stat-view-servlet:
+        enabled: true
+        #内置监控页面的地址
+        url-pattern: /druid/*
+        #设置登录用户名
+        login-username: admin
+        #设置登录密码
+        login-password: admin
+        #白名单（如果allow没有配置或者为空，则允许所有访问）
+        allow:
+        #黑名单（deny优先于allow，如果在deny列表中，就算在allow列表中，也会被拒绝）
+        deny:
+
+
   redis:
     host: 192.168.8.203
     password: taihe123?

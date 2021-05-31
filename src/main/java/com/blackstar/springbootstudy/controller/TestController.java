@@ -1,5 +1,6 @@
 package com.blackstar.springbootstudy.controller;
 
+import com.blackstar.springbootstudy.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -25,11 +26,19 @@ public class TestController {
     @Autowired
     private RedisTemplate<String,Object> redisTemplate;
 
+    @Autowired
+    private TestService testService;
+
     @GetMapping("test1")
     public String test1(){
         ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
         Object dictValue_1139 = valueOperations.get("dictValue_1139");
 
+        //testService.test2();
+        //testService.test3();
+        //testService.test4();
+        testService.test5();
+        //testService.test6();
         return "测试AutoConfigurationImportSelector"+dictValue_1139;
     }
 

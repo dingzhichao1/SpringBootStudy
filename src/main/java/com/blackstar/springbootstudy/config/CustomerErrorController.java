@@ -22,11 +22,9 @@ public class CustomerErrorController implements ErrorController {
         return DEFAULT_ERROR_PATH;
     }
 
-
     @RequestMapping(DEFAULT_ERROR_PATH)
-    public String error(){
-
-        return "页面访问出现错误";
+    public ResultVo error(){
+        return ResultVo.ok();
     }
 
 

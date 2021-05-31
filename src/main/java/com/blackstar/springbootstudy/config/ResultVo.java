@@ -1,9 +1,7 @@
 package com.blackstar.springbootstudy.config;
 
 import com.blackstar.springbootstudy.config.constant.ResponseCode;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * Description：Controller返回的统一Json格式
@@ -12,10 +10,7 @@ import lombok.NoArgsConstructor;
  * @version 1.0
  * @date 2020-05-19 10:16
  */
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@ToString
 public class ResultVo<T> {
 
     /**
@@ -65,9 +60,10 @@ public class ResultVo<T> {
     public static <T> ResultVo<T> ok() {
         return new ResultVo<>(ResponseCode.OK.getCode(), null, null);
     }
-    
+
     /**
      * 执行结果异常（业务异常）
+     *
      * @param message
      * @param data
      * @param <T>
@@ -76,9 +72,58 @@ public class ResultVo<T> {
     public static <T> ResultVo<T> error(String message, T data) {
         return new ResultVo<>(ResponseCode.FRIENDLY_ERROR_CODE.getCode(), data, message);
     }
-    
+
     public static <T> ResultVo<T> error(String message) {
         return new ResultVo<>(ResponseCode.FRIENDLY_ERROR_CODE.getCode(), null, message);
     }
-    
+
+
+    private ResultVo(int code, T data, String message) {
+        this.code = code;
+        this.data = data;
+        this.message = message;
+    }
+
+    private ResultVo() {
+    }
+
+
+    /**
+     * ResultVo的构建者
+     * @param <T>
+     */
+    public static class ResultBuilder<T> {
+
+        private ResultVo<T> resultVo;
+
+
+        public ResultBuilder() {
+            resultVo = new ResultVo<>();
+        }
+
+        public ResultBuilder setData(T data) {
+            this.resultVo.data=data;
+            return this;
+        }
+
+        public ResultBuilder setMessage(String message) {
+            this.resultVo.message=message;
+            return this;
+        }
+
+        public ResultBuilder setCode(int code) {
+            this.resultVo.code=code;
+            return this;
+        }
+
+
+        public ResultVo<T> build() {
+            return resultVo;
+        }
+
+    }
+
+
+
+
 }

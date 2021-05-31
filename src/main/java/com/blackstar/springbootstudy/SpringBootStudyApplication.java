@@ -2,6 +2,8 @@ package com.blackstar.springbootstudy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * Description：SpringBoot的启动类
@@ -12,6 +14,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
+/**
+ * 开放Aop代理接口
+ */
+@EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
+@EnableTransactionManagement
 public class SpringBootStudyApplication {
 
     /**
