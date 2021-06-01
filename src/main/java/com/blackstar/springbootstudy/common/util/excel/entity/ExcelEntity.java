@@ -1,7 +1,6 @@
 package com.blackstar.springbootstudy.common.util.excel.entity;
 
 import lombok.Data;
-
 import java.util.List;
 
 /**
@@ -32,6 +31,8 @@ public class ExcelEntity<T> {
     @Data
     public static class SheetEntity<T>{
 
+
+
         /**
          * sheet的唯一标识
          */
@@ -43,19 +44,66 @@ public class ExcelEntity<T> {
         private String sheetName;
 
         /**
+         * 标题
+         */
+        private TitleEntity titleEntity;
+
+
+        /**
          * 数据
          */
         private List<T>  dataList;
 
-
         /**
          *  列名
          */
-        private List<String>  dataNameList;
+        private List<HeaderEntity>  headers;
 
 
     }
 
+    /**
+     *  Excel表格头
+     */
+    @Data
+    public static class  HeaderEntity{
+        /**
+         * 标题名
+         */
+        private String name;
+
+
+        /**
+         * 字段名
+         */
+        private String fieldName;
+
+    }
+
+
+    /**
+     * Excel表格标题
+     */
+    @Data
+    public static class TitleEntity{
+        /**
+         * 标题名
+         */
+        private String name;
+
+        /**
+         * 标题所占列数
+         */
+        private Integer colNums;
+
+
+        /**
+         * 标题所占行数
+         */
+        private Integer rowNums;
+
+
+    }
 
 
 }
